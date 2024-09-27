@@ -16,10 +16,12 @@ function addContainerListners(currentContainer: HTMLDivElement)
     const currentContainerDeletionBtn = currentContainer.querySelector('.delete-container-btn') as HTMLButtonElement;
     const currentAddItemBtn = currentContainer.querySelector('.add-item-btn') as HTMLButtonElement
     const currentCloseFormBtn = currentContainer.querySelector('.close-form-btn') as HTMLButtonElement
-    
+    const currentForm = currentContainer.querySelector('form') as HTMLFormElement
+   
     deleteBtnListeners(currentContainerDeletionBtn);
     addItemBtnListeners(currentAddItemBtn);
     closingFormBtnListeners(currentCloseFormBtn);
+   addFormSubmitListeners(currentForm);
 }
 itemsContainer.forEach((container: HTMLDivElement)=>
 {
@@ -45,7 +47,10 @@ btn.addEventListener("click", handleContainerDeletion)
 function closingFormBtnListeners(btn:HTMLButtonElement){
     btn.addEventListener('click',() => toggleForm( actualBtn, actualForm, false))
     }
-
+function addFormSubmitListeners(form:HTMLFormElement)
+{
+    form.addEventListener('submit', createNewItem)
+}
 
 function handleContainerDeletion(e:MouseEvent)
 {
@@ -91,4 +96,16 @@ actualForm= actualContainer.querySelector('form') as HTMLFormElement;
  actualTextInput= actualContainer.querySelector('input') as HTMLInputElement;
  actualValidation = actualContainer.querySelector('.validation-msg') as HTMLSpanElement;
 
+}
+function createNewItem(e:Event)
+{
+    e.preventDefault()
+    if(actualTextInput.value.length === 0)
+    {
+        actualValidation.textContent = "Must be at leats 1 character long"
+    return;
+
+    }else{
+        actualValidation.textContent = "";
+    }
 }

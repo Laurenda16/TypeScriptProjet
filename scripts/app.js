@@ -10,9 +10,11 @@ function addContainerListners(currentContainer) {
     const currentContainerDeletionBtn = currentContainer.querySelector('.delete-container-btn');
     const currentAddItemBtn = currentContainer.querySelector('.add-item-btn');
     const currentCloseFormBtn = currentContainer.querySelector('.close-form-btn');
+    const currentForm = currentContainer.querySelector('form');
     deleteBtnListeners(currentContainerDeletionBtn);
     addItemBtnListeners(currentAddItemBtn);
     closingFormBtnListeners(currentCloseFormBtn);
+    addFormSubmitListeners(currentForm);
 }
 itemsContainer.forEach((container) => {
     addContainerListners(container);
@@ -27,6 +29,9 @@ function deleteBtnListeners(btn) {
 //fonction3
 function closingFormBtnListeners(btn) {
     btn.addEventListener('click', () => toggleForm(actualBtn, actualForm, false));
+}
+function addFormSubmitListeners(form) {
+    form.addEventListener('submit', createNewItem);
 }
 function handleContainerDeletion(e) {
     const btn = e.target;
@@ -59,4 +64,14 @@ function setContainerItems(btn) {
     actualForm = actualContainer.querySelector('form');
     actualTextInput = actualContainer.querySelector('input');
     actualValidation = actualContainer.querySelector('.validation-msg');
+}
+function createNewItem(e) {
+    e.preventDefault();
+    if (actualTextInput.value.length === 0) {
+        actualValidation.textContent = "Must be at leats 1 character long";
+        return;
+    }
+    else {
+        actualValidation.textContent = "";
+    }
 }
