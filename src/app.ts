@@ -51,12 +51,23 @@ containers[btnsArray.indexOf(btn)].remove();
 function handleAddItem(e:MouseEvent)
 {
     const btn = e.target as HTMLButtonElement;
+    if(actualContainer)toggleForm(actualBtn,actualForm,false);
+   
     setContainerItems(btn);
     toggleForm(actualBtn,actualForm,true);
 
 }
 function toggleForm(btn:HTMLButtonElement, form:HTMLFormElement, action:boolean)
 {
+    if(!action)
+    {
+        form.style.display= "none"
+        btn.style.display ="block"
+    }else if(action)
+    {
+         form.style.display= "block"
+        btn.style.display ="note"
+    }
 
 }
 ///fonction setConatainer
