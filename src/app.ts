@@ -15,8 +15,11 @@ function addContainerListners(currentContainer: HTMLDivElement)
 {
     const currentContainerDeletionBtn = currentContainer.querySelector('.delete-container-btn') as HTMLButtonElement;
     const currentAddItemBtn = currentContainer.querySelector('.add-item-btn') as HTMLButtonElement
+    const currentCloseFormBtn = currentContainer.querySelector('.close-form-btn') as HTMLButtonElement
+    
     deleteBtnListeners(currentContainerDeletionBtn);
     addItemBtnListeners(currentAddItemBtn);
+    closingFormBtnListeners(currentCloseFormBtn);
 }
 itemsContainer.forEach((container: HTMLDivElement)=>
 {
@@ -37,6 +40,12 @@ function deleteBtnListeners(btn:HTMLButtonElement)
 {
 btn.addEventListener("click", handleContainerDeletion)
 }
+
+//fonction3
+function closingFormBtnListeners(btn:HTMLButtonElement){
+    btn.addEventListener('click',() => toggleForm( actualBtn, actualForm, false))
+    }
+
 
 function handleContainerDeletion(e:MouseEvent)
 {

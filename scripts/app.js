@@ -9,8 +9,10 @@ let actualValidation;
 function addContainerListners(currentContainer) {
     const currentContainerDeletionBtn = currentContainer.querySelector('.delete-container-btn');
     const currentAddItemBtn = currentContainer.querySelector('.add-item-btn');
+    const currentCloseFormBtn = currentContainer.querySelector('.close-form-btn');
     deleteBtnListeners(currentContainerDeletionBtn);
     addItemBtnListeners(currentAddItemBtn);
+    closingFormBtnListeners(currentCloseFormBtn);
 }
 itemsContainer.forEach((container) => {
     addContainerListners(container);
@@ -21,6 +23,10 @@ function addItemBtnListeners(btn) {
 }
 function deleteBtnListeners(btn) {
     btn.addEventListener("click", handleContainerDeletion);
+}
+//fonction3
+function closingFormBtnListeners(btn) {
+    btn.addEventListener('click', () => toggleForm(actualBtn, actualForm, false));
 }
 function handleContainerDeletion(e) {
     const btn = e.target;
