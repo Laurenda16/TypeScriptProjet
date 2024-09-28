@@ -100,12 +100,35 @@ actualForm= actualContainer.querySelector('form') as HTMLFormElement;
 function createNewItem(e:Event)
 {
     e.preventDefault()
+    //validation
     if(actualTextInput.value.length === 0)
     {
-        actualValidation.textContent = "Must be at leats 1 character long"
+        actualValidation.textContent = "Must be at least 1 character long"
     return;
 
     }else{
         actualValidation.textContent = "";
     }
+    //creation Item
+    const itemContent =actualTextInput.value;
+    const li =`
+    <li class="item" graggable ="true">
+    <p>${itemContent} </p>
+    <button>X</button>
+    </li>`
+    actualUL.insertAdjacentHTML('beforeend',li);
+  const item = actualUL.lastElementChild as HTMLLIElement
+  const liBtn = item.querySelector('button') as HTMLButtonElement
+  handleItemDelection(liBtn);
+  actualTextInput.value = "";
+
+}
+function   handleItemDelection(btn:HTMLButtonElement)
+{
+btn.addEventListener('click',()=>
+{
+    const elToRemove =btn.parentElement as HTMLLIElement
+
+elToRemove.remove();
+})
 }

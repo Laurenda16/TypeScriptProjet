@@ -67,11 +67,30 @@ function setContainerItems(btn) {
 }
 function createNewItem(e) {
     e.preventDefault();
+    //validation
     if (actualTextInput.value.length === 0) {
-        actualValidation.textContent = "Must be at leats 1 character long";
+        actualValidation.textContent = "Must be at least 1 character long";
         return;
     }
     else {
         actualValidation.textContent = "";
     }
+    //creation Item
+    const itemContent = actualTextInput.value;
+    const li = `
+    <li class="item" graggable ="true">
+    <p>${itemContent} </p>
+    <button>X</button>
+    </li>`;
+    actualUL.insertAdjacentHTML('beforeend', li);
+    const item = actualUL.lastElementChild;
+    const liBtn = item.querySelector('button');
+    handleItemDelection(liBtn);
+    actualTextInput.value = "";
+}
+function handleItemDelection(btn) {
+    btn.addEventListener('click', () => {
+        const elToRemove = btn.parentElement;
+        elToRemove.remove();
+    });
 }
