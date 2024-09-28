@@ -94,3 +94,58 @@ function handleItemDelection(btn) {
         elToRemove.remove();
     });
 }
+//add new container
+const addContainerBtn = document.querySelector('.add-container-btn');
+const addContainerForm = document.querySelector('.add-new-container form');
+const addContainerFormInput = document.querySelector('.aff-new-container input');
+const validationNewContainer = document.querySelector('.add-new-container .validation-msg');
+const addContainerCloseBtn = document.querySelector('.close-add-list');
+const addNewContainer = document.querySelector('.add-new-container');
+const containersList = document.querySelector('.main-content');
+addContainerBtn.addEventListener('click', () => {
+    toggleForm(addContainerBtn, addContainerForm, true);
+});
+addContainerCloseBtn.addEventListener('click', () => {
+    toggleForm(addContainerBtn, addContainerForm, false);
+});
+addContainerForm.addEventListener('submit', createNewContainer);
+function createNewContainer(e) {
+    e.preventDefault();
+    if (addContainerFormInput.value.length === 0) {
+        validationNewContainer.textContent = "Mulst be at least 1 charatee long";
+        return;
+    }
+    else {
+        validationNewContainer.textContent = '';
+    }
+    const itemsContainer = document.querySelector('.items-container');
+    const newContainer = itemsContainer.cloneNode();
+    const newContainerContent = `<div class="items-container" draggable="true">
+            <div class="top-container">
+                <h2>${addContainerFormInput.value}</h2>
+                <button class="delete-container-btn">X</button>
+            </div>
+<ul></ul>
+<button type="button" class="add-item-btn">Add an item</button>
+<form action="" autocomplete="off">
+    <div class="top-form-container">
+        <label for="">Add a new item</label>
+        <button class="close-form-btn">x</button>
+    </div>
+   
+
+<input type="text" name="" id="item">
+<span class="validation-msg"></span>
+<button type="submit">Submit</button>
+
+
+
+</form>
+        </div>
+
+`;
+    newContainer.innerHTML = newContainerContent;
+    containersList.insertBefore(newContainer, addNewContainer);
+    addContainerFormInput.value = "";
+    addContainerListners(newContainer);
+}
