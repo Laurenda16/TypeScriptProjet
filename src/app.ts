@@ -136,9 +136,9 @@ elToRemove.remove();
 })
 }
 //add new container
-const addContainerBtn= document.querySelector('.add-container-btn') as HTMLButtonElement
+const addContainerBtn = document.querySelector('.add-container-btn') as HTMLButtonElement
 const addContainerForm = document.querySelector('.add-new-container form') as HTMLFormElement
-const addContainerFormInput =document.querySelector('.aff-new-container input') as HTMLInputElement
+const addContainerFormInput =document.querySelector('.add-new-container input') as HTMLInputElement
 const validationNewContainer=document.querySelector('.add-new-container .validation-msg')as HTMLSpanElement
 const addContainerCloseBtn=document.querySelector('.close-add-list') as HTMLButtonElement 
 const addNewContainer =document.querySelector('.add-new-container')as HTMLDivElement
@@ -170,7 +170,7 @@ const itemsContainer = document.querySelector('.items-container') as HTMLDivElem
 const newContainer = itemsContainer.cloneNode() as HTMLDivElement
 
 const newContainerContent=
-`<div class="items-container" draggable="true">
+`
             <div class="top-container">
                 <h2>${addContainerFormInput.value}</h2>
                 <button class="delete-container-btn">X</button>
@@ -191,7 +191,7 @@ const newContainerContent=
 
 
 </form>
-        </div>
+      
 
 `
 newContainer.innerHTML =newContainerContent;

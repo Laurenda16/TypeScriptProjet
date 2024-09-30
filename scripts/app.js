@@ -97,7 +97,7 @@ function handleItemDelection(btn) {
 //add new container
 const addContainerBtn = document.querySelector('.add-container-btn');
 const addContainerForm = document.querySelector('.add-new-container form');
-const addContainerFormInput = document.querySelector('.aff-new-container input');
+const addContainerFormInput = document.querySelector('.add-new-container input');
 const validationNewContainer = document.querySelector('.add-new-container .validation-msg');
 const addContainerCloseBtn = document.querySelector('.close-add-list');
 const addNewContainer = document.querySelector('.add-new-container');
@@ -120,7 +120,7 @@ function createNewContainer(e) {
     }
     const itemsContainer = document.querySelector('.items-container');
     const newContainer = itemsContainer.cloneNode();
-    const newContainerContent = `<div class="items-container" draggable="true">
+    const newContainerContent = `
             <div class="top-container">
                 <h2>${addContainerFormInput.value}</h2>
                 <button class="delete-container-btn">X</button>
@@ -141,7 +141,7 @@ function createNewContainer(e) {
 
 
 </form>
-        </div>
+      
 
 `;
     newContainer.innerHTML = newContainerContent;
