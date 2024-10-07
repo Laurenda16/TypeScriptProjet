@@ -221,7 +221,7 @@ function handleDragStart(this:HTMLElement, e:DragEvent)
 {
 e.stopPropagation();
 if(actualContainer) toggleForm(actualBtn,actualForm,false)
-dragSrcEl =this;
+dragSrcEl = this;
 e.dataTransfer?.setData('text/html', this.innerHTML)
 
 }
@@ -238,14 +238,14 @@ function handleDrop(this:HTMLElement, e:DragEvent)
     const receptionEl = this;
     if(dragSrcEl.nodeName === "LI" && receptionEl.classList.contains("items-container"))
     {
-        (receptionEl.querySelector('ul') as HTMLUListElement).appendChild(dragSrcEl);
+         (receptionEl.querySelector('ul') as HTMLUListElement).appendChild(dragSrcEl);
         addDDListeners(dragSrcEl)
-        handleItemDelection(dragSrcEl.querySelector('button') as HTMLButtonElement)
+        handleItemDelection(dragSrcEl.querySelector("button") as HTMLButtonElement)
     }
 
-    if(dragSrcEl !== this && this.classList[0]===dragSrcEl.classList[0]){
+    if(dragSrcEl !== this && this.classList[0] === dragSrcEl.classList[0]){
         dragSrcEl.innerHTML = this.innerHTML;
-        this.innerHTML =e.dataTransfer?.getData('text/html') as string;
+        this.innerHTML = e.dataTransfer?.getData('text/html') as string;
 
     if(this.classList.contains("items-container")) {
         addContainerListners(this as HTMLDivElement);

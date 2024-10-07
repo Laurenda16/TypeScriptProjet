@@ -179,7 +179,7 @@ function handleDrop(e) {
     if (dragSrcEl.nodeName === "LI" && receptionEl.classList.contains("items-container")) {
         receptionEl.querySelector('ul').appendChild(dragSrcEl);
         addDDListeners(dragSrcEl);
-        handleItemDelection(dragSrcEl.querySelector('button'));
+        handleItemDelection(dragSrcEl.querySelector("button"));
     }
     if (dragSrcEl !== this && this.classList[0] === dragSrcEl.classList[0]) {
         dragSrcEl.innerHTML = this.innerHTML;
